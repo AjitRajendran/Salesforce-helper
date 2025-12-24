@@ -44,7 +44,7 @@ Since this is a developer-focused toolkit, you can install it manually in second
 
 ---
 
-## 📖 User Guide
+## 📖 User Guide (screenshots)
 
 ### 1. Beautifying Formulas
 Copy any complex Salesforce formula and paste it into the **Beautifier** tab. The tool will instantly restructure the logic. Click **Copy Formatted Formula** to paste it back into Salesforce.
