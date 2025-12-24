@@ -1,0 +1,161 @@
+body { width: 480px; margin: 0; font-family: 'Segoe UI', sans-serif; height: 600px; display: flex; flex-direction: column; background: #f3f3f3; }
+#header { background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.tab-bar { display: flex; background: #f8f9fb; }
+.tab { flex: 1; text-align: center; padding: 12px; cursor: pointer; color: #514f4d; border-bottom: 3px solid transparent; font-weight: 600; font-size: 13px; }
+.tab.active { color: #0176d3; border-bottom-color: #0176d3; background: white; }
+
+.view { padding: 12px; display: flex; flex-direction: column; flex-grow: 1; overflow: hidden; }
+input, textarea { width: 100%; padding: 10px; border: 1px solid #dddbda; border-radius: 4px; box-sizing: border-box; }
+
+/* Base Card Style */
+/* Card layout for multi-line fields */
+.card {
+    background: white;
+    margin-bottom: 5px;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Field Finder Layout (Grid) */
+.field-card {
+    display: grid;
+    grid-template-columns: 24px 1fr; /* Checkbox fixed, text takes rest */
+    align-items: center;
+    gap: 12px;
+}
+
+/* Flow Search Layout (Flex Row) */
+.flow-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field-card input[type="checkbox"] {
+    margin-top: 4px; /* Aligns checkbox with the top line (label) */
+    margin-right: 12px;
+}
+.field-link {
+    color: #0176d3 !important;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.field-link:hover {
+    text-decoration: underline !important;
+}
+
+/* Ensure flow meta stays on the same line */
+.flow-meta-text {
+    font-size: 11px;
+    color: #706e6b;
+    margin-top: 3px;
+}
+
+/* Prevent layout breaking in the code block */
+.syntax-func { 
+    color: #82aaff; /* Light Blue */
+    font-weight: bold; 
+}
+
+.syntax-string { 
+    color: #ecc48d; /* Soft Orange/Yellow */
+}
+
+.syntax-bracket { 
+    color: #c792ea; /* Purple */
+    font-weight: bold; 
+}
+
+.code-block {
+    background: #011627; /* Deep Navy Night */
+    color: #d6deeb;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+    white-space: pre-wrap; /* Critical for <br> support */
+    border: 1px solid #122d42;
+    margin-top: 12px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.custom-badge {
+    background: #faffbd;
+    color: #856404;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 1px solid #ffeeba;
+    font-weight: bold;
+}
+
+/* Fix for Button Visibility */
+#btnInspector {
+    background: #4bca81 !important; /* Force Green */
+    color: white !important;
+    display: none; /* Controlled by JS */
+}
+
+.syntax-func { 
+    color: #82b1ff; 
+    font-weight: bold; 
+}
+
+.syntax-string { 
+    color: #c3e88d; 
+}
+
+.syntax-bracket { 
+    color: #ffcb6b; 
+    font-weight: bold; 
+}
+
+/* Copy Button Styling */
+#btnCopyFormula {
+    background: #ffffff;
+    border: 2px solid #0176d3;
+    color: #0176d3;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: 0.2s ease;
+}
+
+#btnCopyFormula:hover {
+    background: #0176d3;
+    color: white;
+}
+
+.mode-toggle {
+    display: flex;
+    background: #e0e5ee;
+    padding: 2px;
+    border-radius: 6px;
+}
+
+.toggle-btn {
+    border: none;
+    background: transparent;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #514f4d;
+}
+
+.toggle-btn.active {
+    background: white;
+    color: #0176d3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

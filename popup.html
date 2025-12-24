@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+    <div id="userBadge" style="display:none; align-items:center; justify-content:space-between; padding:12px; background:#1589ee; color: white;">
+        <div style="display:flex; flex-direction:column;">
+            <b id="userNameDisplay">...</b>
+            <small id="orgNameDisplay" style="color:#d8edff; font-weight:bold;"></small>
+        </div>
+        <div style="display:flex; gap:8px;">
+            <button id="btnRefresh" title="Refresh Session" class="action-btn btn-danger">Refresh Session</button>
+            <button id="btnInspector" class="action-btn btn-success" style="display:none;">Export - Salesforce Inspector</button>
+        </div>
+    </div>
+    
+    <div class="tab-bar">
+        <div class="tab active" id="tabFields">Field Finder</div>
+        <div class="tab" id="tabFormula">Beautifier</div>
+        <div class="tab" id="tabFlows">Flows</div>
+    </div>
+</div>
+
+    <div id="contentArea">
+        <div id="fieldView" class="view">
+    <div class="search-container">
+        <input type="text" id="objInput" placeholder="Select Object..." list="objectList">
+        <datalist id="objectList"></datalist>
+        <div id="fieldActions" style="display:none; margin-top:8px; align-items:center; gap:10px;">
+            <input type="text" id="fieldSearchInput" placeholder="Filter fields..." style="flex-grow:1;">
+            <label style="font-size:11px; white-space:nowrap;"><input type="checkbox" id="selectAll"> Select All</label>
+        </div>
+    </div>
+    <div id="results"></div>
+</div>
+
+        <div id="formulaView" class="view" style="display:none;">
+    <textarea id="formulaInput" placeholder="Paste formula here..."></textarea>
+    <div style="display:flex; justify-content:flex-end; margin-top:5px;">
+        <button id="btnCopyFormula" style="display:none; padding:4px 10px; cursor:pointer; background:#f3f3f3; border:1px solid #ccc; border-radius:4px;">Copy Formatted Formula</button>
+    </div>
+    <div id="formulaOutput" class="code-block"></div>
+</div>
+
+        <div id="flowView" class="view" style="display:none;">
+            <input type="text" id="flowSearchInput" placeholder="Search Flow..." list="flowList">
+            <datalist id="flowList"></datalist>
+            <div id="flowResults"></div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
