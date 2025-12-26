@@ -1,9 +1,15 @@
-**Salesforce Helper - Privacy Policy**
+**Salesforce Metadata Navigator - Privacy Policy**
 
-**Data Collection**: Salesforce Helper does not collect, store, or transmit any personal user data to external servers. All processing happens locally within the user's browser.
+**Effective Date**: [12/25/2025]
 
-**Use of Permissions:** > * **Cookies**: Used only to retrieve the local session token for API authentication with the user's own Salesforce instance.
+**Data Collection**: > Salesforce Metadata Navigator does not collect, store, or transmit any personal user data to external servers. All operations are processed locally within the user's browser.
 
-- **Tabs**: Used to identify Salesforce URLs for metadata navigation.
+**Use of Permissions**:
 
-**Third-Party Sharing**: No data is shared with third parties. The extension only facilitates communication between the user's browser and their authorized Salesforce environment.
+**Cookies**: Accessed solely to retrieve the Salesforce session ID (sid). This is used only to authenticate API calls between the extension and the user's authorized Salesforce instance.
+
+**Tabs & activeTab**: Used to detect if the user is on a Salesforce domain and to facilitate deep-linking to specific setup pages.
+
+**Host Permissions**: Required to allow the extension to communicate with authorized Salesforce API endpoints.
+
+**Data Security**: This extension does not utilize any remote code. All logic is contained within the package, ensuring that no data is ever exposed to third-party services.
