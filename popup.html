@@ -5,51 +5,109 @@
 </head>
 <body>
     <div id="header">
-    <div id="userBadge" style="display:none; align-items:center; justify-content:space-between; padding:12px; background:#1589ee; color: white;">
-        <div style="display:flex; flex-direction:column;">
-            <b id="userNameDisplay">...</b>
-            <small id="orgNameDisplay" style="color:#d8edff; font-weight:bold;"></small>
-        </div>
-        <div style="display:flex; gap:8px;">
-            <button id="btnRefresh" title="Refresh Session" class="action-btn btn-danger">Refresh Session</button>
-            <button id="btnInspector" class="action-btn btn-success" style="display:none;">Export - Salesforce Inspector</button>
-        </div>
+	<div style="background: #f3f3f3; padding: 10px 12px; border-bottom: 1px solid #dddbda; display: flex; align-items: center; gap: 8px;">
+        <img src="icons/48.png" style="width: 20px; height: 20px;"> <h1 style="margin: 0; font-size: 16px; color: #0176d3; font-family: 'Segoe UI', Tahoma, sans-serif;">
+            Salesforce Metadata Navigator
+        </h1>
     </div>
+        <div id="userBadge" style="display:none; align-items:center; justify-content:space-between; padding:12px; background:#1589ee; color: white;">
+            <div style="display:flex; flex-direction:column;">
+                <b id="userNameDisplay">...</b>
+                <small id="orgNameDisplay" style="color:#d8edff; font-weight:bold;"></small>
+				
+			
+        <button id="btnGlobalReset" title="Clear All Data" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; cursor: pointer; border-radius: 4px; padding: 4px 10px; font-size: 11px; font-weight: bold; transition: background 0.2s;">
+            RESET ALL
+        </button>
+				
+            </div>
+            <div style="display:flex; gap:8px;">
+                <button id="btnRefresh" title="Refresh Session" class="action-btn btn-danger">Refresh Session</button>
+                <button id="btnInspector" class="action-btn btn-success" style="display:none;">Export - Salesforce Inspector</button>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+    <div class="tab-row">
+        <button class="tab-btn active" id="tabFields">Field Finder</button>
+        <button class="tab-btn" id="tabFormula">Beautifier</button>
+        <button class="tab-btn" id="tabFlows">Flows</button>
+		<button class="tab-btn" id="validation-search-tab">Validation Rules</button>
+        </div>
     
-    <div class="tab-bar">
-        <div class="tab active" id="tabFields">Field Finder</div>
-        <div class="tab" id="tabFormula">Beautifier</div>
-        <div class="tab" id="tabFlows">Flows</div>
+    <div class="tab-row">
+	    
+        <button class="tab-btn" id="btnOpenLVTab">Exp - List Views</button>
     </div>
 </div>
+    </div>
 
     <div id="contentArea">
         <div id="fieldView" class="view">
-    <div class="search-container">
-        <input type="text" id="objInput" placeholder="Select Object..." list="objectList">
-        <datalist id="objectList"></datalist>
-        <div id="fieldActions" style="display:none; margin-top:8px; align-items:center; gap:10px;">
-            <input type="text" id="fieldSearchInput" placeholder="Filter fields..." style="flex-grow:1;">
-            <label style="font-size:11px; white-space:nowrap;"><input type="checkbox" id="selectAll"> Select All</label>
+            <div class="search-container">
+                <input type="text" id="objInput" placeholder="Select Object..." list="objectList">
+                <datalist id="objectList"></datalist>
+                <div id="fieldActions" style="display:none; margin-top:8px; align-items:center; gap:10px;">
+                    <input type="text" id="fieldSearchInput" placeholder="Filter fields..." style="flex-grow:1;">
+                    <label style="font-size:11px; white-space:nowrap;"><input type="checkbox" id="selectAll"> Select All</label>
+                </div>
+            </div>
+            <div id="results"></div>
         </div>
-    </div>
-    <div id="results"></div>
-</div>
 
         <div id="formulaView" class="view" style="display:none;">
-    <textarea id="formulaInput" placeholder="Paste formula here..."></textarea>
-    <div style="display:flex; justify-content:flex-end; margin-top:5px;">
-        <button id="btnCopyFormula" style="display:none; padding:4px 10px; cursor:pointer; background:#f3f3f3; border:1px solid #ccc; border-radius:4px;">Copy Formatted Formula</button>
-    </div>
-    <div id="formulaOutput" class="code-block"></div>
-</div>
+            <textarea id="formulaInput" placeholder="Paste formula here..."></textarea>
+			<button id="btnClearFormula" style="font-size: 11px; color: #d32f2f; background: none; border: none; cursor: pointer; text-decoration: underline;">Clear Input</button>
+            <div style="display:flex; justify-content:flex-end; margin-top:5px;">
+                <button id="btnCopyFormula" style="display:none; padding:4px 10px; cursor:pointer; background:#f3f3f3; border:1px solid #ccc; border-radius:4px;">Copy Formatted Formula</button>
+            </div>
+            <div id="formulaOutput" class="code-block"></div>
+        </div>
 
-        <div id="flowView" class="view" style="display:none;">
+        <div id="flowsView" class="view" style="display:none;">
             <input type="text" id="flowSearchInput" placeholder="Search Flow..." list="flowList">
             <datalist id="flowList"></datalist>
             <div id="flowResults"></div>
         </div>
+		
+        <div id="validationView" class="view" style="display:none;">
+            <div class="slds-form-element" style="padding: 10px;">
+                <label class="slds-form-element__label" style="font-weight: bold; display: block; margin-bottom: 8px;">Search Active Validation Rules</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="vr-name" class="slds-input" placeholder="Rule Name..." style="width: 100%; margin-bottom: 5px;">
+                    <input type="text" id="vr-object" class="slds-input" placeholder="Object (e.g. Account)..." list="objectList">
+                    <input type="text" id="vr-message" class="slds-input" placeholder="Error Message snippet..." style="width: 100%; margin-bottom: 10px;">
+                </div>
+                <button id="btn-execute-vr-search" class="slds-button slds-button_brand" style="width: 100%; padding: 8px; cursor: pointer;">Search Active Rules</button>
+            </div>
+            
+            <div id="vr-loader" style="display:none; text-align: center; padding: 20px;">
+                <div class="loader"></div>
+                <p style="font-size: 12px; color: #666;">Querying Tooling API...</p>
+            </div>
+
+            <div id="vr-results" style="margin-top: 10px; max-height: 300px; overflow-y: auto;"></div>
+        </div>
+		
+		
+
+<div id="listViewView" class="view" style="display:none; padding: 10px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+        <input type="text" id="lv-object-input" placeholder="1. Search Object..." list="objectList">
+        
+        <div id="lv-dropdown-container" style="display:none;">
+            <select id="lv-dropdown" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></select>
+        </div>
+
+        <div id="lv-export-footer" style="display:none; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+            <button id="btnInspectorExportLV" style="background:#faffbd; border:1px solid #d4d4d4; padding:12px; width:100%; cursor:pointer; font-weight:bold; border-radius:4px;">
+                 Export List View via Inspector
+            </button>
+        </div>
     </div>
+</div>
+</div>
+
     <script src="popup.js"></script>
 </body>
 </html>

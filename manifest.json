@@ -1,12 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Salesforce Metadata Navigator",
-  "version": "1.0.0",
-  "description": "Streamline Salesforce development with ID-based navigation and intelligent formula beautification.",
+  "version": "1.0.3",
+  "description": "Advanced toolkit for Admins: Formula Beautifier, Field Finder, Search Validation rules, Flow Manager and Export List views",
   "permissions": [
-    "tabs",
     "cookies",
-	"activeTab"
+    "activeTab"
   ],
   "host_permissions": [
     "https://*.salesforce.com/*",
@@ -26,12 +25,20 @@
 	"https://*.visualforce.com/*",
 	"https://*.visualforce.mil/*"
   ],
-  "action": {
-    "default_popup": "popup.html"
+   "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
   },
   "background": {
     "service_worker": "background.js"
   }
-
 }
-
